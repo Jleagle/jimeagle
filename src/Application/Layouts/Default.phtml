@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jimeagle.uk</title>
+
+  <?= \Packaged\Dispatch\AssetManager::generateHtmlIncludes('css'); ?>
+
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-primary">
+    <h1>Jimeagle.uk</h1>
+    <p>Hi, I'm Jim, a web developer in Hampshire, UK</p>
+  </div>
+</div>
+
+<div class="container">
+  <?= $this->content(); ?>
+</div>
+
+<?= \Packaged\Dispatch\AssetManager::generateHtmlIncludes('js'); ?>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+/.idea
+/vendor
+/conf
+/static
+app.yaml
+composer.lock
