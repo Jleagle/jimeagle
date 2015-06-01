@@ -38,7 +38,7 @@ class Repo extends A
     }
 
     $right->appendContent(
-      new H4($this->_title, ['class', 'list-group-item-heading'])
+      new H4($this->_title, ['class' => 'list-group-item-heading'])
     );
 
     if($this->_desc)
