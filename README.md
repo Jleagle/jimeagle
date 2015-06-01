@@ -1,4 +1,4 @@
-jimeagle.uk
-===========
+# jimeagle.com
 
-My website, made in Cubex (https://github.com/cubex), hosted on App Engine. 
+My website, made with [Cubex](http://cubex.io),
+hosted on [App Engine](https://console.developers.google.com/project).
