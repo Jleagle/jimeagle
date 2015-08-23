@@ -15,7 +15,7 @@ class Application extends ApplicationKernel
       [
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
         'css/roboto.min',
-        'css/material.min',
+        'css/material',
         'css/ripples.min',
         'css/main',
       ]
