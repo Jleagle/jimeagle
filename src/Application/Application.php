@@ -29,7 +29,7 @@ class Application extends ApplicationKernel
         'js/ripples.min',
         'js/material.min',
         'js/main',
-      ]
+      ], 'defer'
     );
   }
 
