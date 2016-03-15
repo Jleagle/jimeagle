@@ -13,23 +13,11 @@ class Application extends ApplicationKernel
 
     $am->requireCss(
       [
-        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-        'css/roboto.min',
-        'css/material',
-        'css/ripples.min',
-        'css/main',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
+        '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
+        '//fonts.googleapis.com/css?family=Montserrat:400,700',
+        'css/css',
       ]
-    );
-
-    $am->requireJs(
-      [
-        '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
-        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js',
-        '//www.google.com/recaptcha/api.js',
-        'js/ripples.min',
-        'js/material.min',
-        'js/main',
-      ], 'defer'
     );
   }
 

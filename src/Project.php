@@ -4,7 +4,6 @@ namespace Jleagle\Homepage;
 use Cubex\Kernel\CubexKernel;
 use Jleagle\Homepage\Application\Application;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class Project extends CubexKernel
 {
@@ -14,6 +13,7 @@ class Project extends CubexKernel
   public function defaultAction()
   {
     $this->_checkDomain();
+
     return new Application();
   }
 
@@ -22,21 +22,16 @@ class Project extends CubexKernel
    */
   private function _checkDomain()
   {
-    $domain = $this->_getRequest()->domain();
-    $sub = $this->_getRequest()->subDomain();
-    $tld = $this->_getRequest()->tld();
-    $path = $this->_getRequest()->path();
-    $port = $this->_getRequest()->port();
+    $request = $this->_getRequest();
 
-    if ($port == 80)
+    if($request->port() == 80)
     {
-      if($tld != 'uk' || $sub == 'www')
+      if($request->tld() != 'uk' || $request->subDomain() == 'www')
       {
-        $url = 'http://' . $domain . '.uk' . $path;
+        $url = 'http://' . $request->domain() . '.uk' . $request->path();
         return RedirectResponse::create($url)->send();
       }
     }
     return $this;
   }
-
 }

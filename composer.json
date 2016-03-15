@@ -1,32 +1,13 @@
 {
-  "require":      {
-    "cubex/framework":          "~2.1",
-    "packaged/dispatch":        "~1.0",
-    "stack/builder":            "~1.0",
-    "anlutro/form":             "~0.3",
-    "jleagle/recaptcha-v2":     "~0.0",
-    "jleagle/html-builder":     "~0.0",
-    "jleagle/app-engine-stubs": "*",
-    "respect/validation":       "~0.9",
-    "guzzlehttp/guzzle":        "~5.2"
+  "require": {
+    "cubex/framework": "~2.1",
+    "packaged/dispatch": "~1.0",
+    "stack/builder": "~1.0",
+    "jleagle/app-engine-stubs": "*"
   },
-  "autoload":     {
+  "autoload": {
     "psr-4": {
       "Jleagle\\Homepage\\": "src/"
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url":  "git@github.com:jleagle/recaptcha-v2.git"
-    },
-    {
-      "type": "vcs",
-      "url":  "git@github.com:jleagle/html-builder.git"
-    },
-    {
-      "type": "vcs",
-      "url":  "git@github.com:jleagle/app-engine-stubs.git"
-    }
-  ]
+  }
 }
