@@ -2,8 +2,7 @@
   "require": {
     "cubex/framework": "~2.1",
     "packaged/dispatch": "~1.0",
-    "stack/builder": "~1.0",
-    "jleagle/app-engine-stubs": "*"
+    "stack/builder": "~1.0"
   },
   "autoload": {
     "psr-4": {

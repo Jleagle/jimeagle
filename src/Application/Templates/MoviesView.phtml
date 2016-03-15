@@ -1,0 +1,54 @@
+<?php
+/**
+ * @var $this \Jleagle\Homepage\Application\Views\MoviesView
+ */
+?>
+
+<h1>Movies</h1>
+
+<div class="container">
+
+  <table class="table table-hover table-condensed">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Codec</th>
+      <th>Container</th>
+      <th>Source</th>
+      <th>Dimensions</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach($this->getArray() as $filename)
+    {
+      $filename = basename($filename);
+
+      if($filename != '@eaDir')
+      {
+        list($title, $year, $stats) = preg_split("/[()]+/", $filename);
+
+        $stats = explode(' - ', $stats, 5)
+        ?>
+
+        <tr>
+          <td><?= $title ?></td>
+          <td><?= $year ?></td>
+          <td><?= $stats[0] ?></td>
+          <td><?= $stats[1] ?></td>
+          <td><?= $stats[2] ?></td>
+          <td><?= $stats[3] ?></td>
+          <td><?= $stats[4] ?></td>
+          <td><?= $stats[5] ?></td>
+        </tr>
+
+        <?php
+      }
+    }
+    ?>
+    </tbody>
+  </table>
+</div>
