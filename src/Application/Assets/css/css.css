@@ -1,8 +1,9 @@
 body {
-  overflow-x: hidden;
-  text-align: center;
-  color:      #fff;
-  background: #18bc9c;
+  overflow-x:    hidden;
+  text-align:    center;
+  color:         #fff;
+  background:    #18bc9c;
+  margin-bottom: 20px;
 }
 
 hr.star-light,
@@ -68,7 +69,7 @@ header .intro-text .skills {
 }
 
 header .intro-text .skills a {
-  color:       #ffffff;
+  color: #ffffff;
 }
 
 header .container {
@@ -82,4 +83,21 @@ header .intro-text .name {
 
 header .intro-text .skills {
   font-size: 1.75em;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #18bc9c;
+  font-weight:      bold;
+}
+
+.table th, .table td {
+  text-align: left;
+}
+
+table.dataTable.no-footer {
+  border-bottom: none;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: none;
 }
