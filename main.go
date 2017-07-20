@@ -11,10 +11,13 @@ import (
 func main() {
 
 	http.HandleFunc("/", homeHandler)
-
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	log.Fatal(http.ListenAndServe(":8082", nil))
+}
+
+func faviconHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "relative/path/to/favicon.ico")
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
