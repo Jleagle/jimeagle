@@ -13,7 +13,7 @@ func main() {
 	http.HandleFunc("/", homeHandler)
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
-	log.Fatal(http.ListenAndServe(":8082", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
