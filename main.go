@@ -4,8 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"path"
-	"runtime"
+	"os"
 )
 
 func main() {
@@ -28,14 +27,12 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Get current app path
-	_, file, _, ok := runtime.Caller(0)
-	if !ok {
-		panic("No caller information")
-	}
-	folder := path.Dir(file)
-
 	// Load templates needed
+	folder := os.Getenv("JIMEAGLE_PATH")
+	if folder == "" {
+		folder = "/root"
+	}
+
 	t, err := template.ParseFiles(folder + "/templates/home.html")
 	if err != nil {
 		panic(err)
