@@ -1,0 +1,23 @@
+<body>
+<form>
+    <textarea style="width: 200px; height: 200px;"></textarea>
+</form>
+<pre></pre>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $('textarea').on('change', function(){
+        let val = $(this).val().split(' ');
+
+        val.forEach(function (value, i) {
+            console.log(value, i);
+            if (value.startsWith('/')){
+                val[i] = "<br>"+val[i]
+            }
+        });
+
+        $('pre').html(val.join(' '))
+
+    });
+</script>
+</body>
