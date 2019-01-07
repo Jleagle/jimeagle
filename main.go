@@ -5,27 +5,30 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
+
+	"github.com/go-chi/chi"
 )
 
 func main() {
 
-	http.HandleFunc("/", homeHandler)
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	r := chi.NewRouter()
+	r.Get("/", homeHandler)
+	r.Get("/tools", toolsHandler)
+	//r.NotFound(error404Handler)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	fileServer(r)
+
+	err := http.ListenAndServe(":8080", r)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
-func faviconHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "relative/path/to/favicon.ico")
-}
+//func error404Handler(w http.ResponseWriter, r *http.Request) {
+//}
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-
-	// 404 page
-	if r.URL.Path != "/" {
-		http.Error(w, http.StatusText(404), 404)
-		return
-	}
 
 	// Load templates needed
 	folder := os.Getenv("JIMEAGLE_PATH")
@@ -43,4 +46,47 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func toolsHandler(w http.ResponseWriter, r *http.Request) {
+
+	// Load templates needed
+	folder := os.Getenv("JIMEAGLE_PATH")
+	if folder == "" {
+		folder = "/root"
+	}
+
+	t, err := template.ParseFiles(folder + "/templates/tools.html")
+	if err != nil {
+		panic(err)
+	}
+
+	// Write a respone
+	err = t.ExecuteTemplate(w, "tools", nil)
+	if err != nil {
+		panic(err)
+	}
+}
+
+// FileServer conveniently sets up a http.FileServer handler to serve
+// static files from a http.FileSystem.
+func fileServer(r chi.Router) {
+
+	path := "/assets"
+
+	if strings.ContainsAny(path, "{}*") {
+		panic("FileServer does not permit URL parameters.")
+	}
+
+	fs := http.StripPrefix(path, http.FileServer(http.Dir(strings.TrimLeft(path, "/"))))
+
+	if path[len(path)-1] != '/' {
+		r.Get(path, http.RedirectHandler(path+"/", 301).ServeHTTP)
+		path += "/"
+	}
+	path += "*"
+
+	r.Get(path, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fs.ServeHTTP(w, r)
+	}))
 }
