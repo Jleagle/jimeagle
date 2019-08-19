@@ -15,7 +15,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Get("/", homeHandler)
 	r.Get("/tools", toolsHandler)
-	//r.NotFound(error404Handler)
+	// r.NotFound(error404Handler)
 
 	fileServer(r)
 
@@ -25,8 +25,8 @@ func main() {
 	}
 }
 
-//func error404Handler(w http.ResponseWriter, r *http.Request) {
-//}
+// func error404Handler(w http.ResponseWriter, r *http.Request) {
+// }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 
