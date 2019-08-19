@@ -1,4 +1,4 @@
-tmp/
-vendor/
-jimeagle
-debug
+/vendor/
+/tmp/
+/jimeagle
+/debug
