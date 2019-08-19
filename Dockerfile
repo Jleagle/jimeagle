@@ -1,18 +1,15 @@
 # Build image
-FROM golang:1.10-alpine AS build-env
-WORKDIR /go/src/github.com/Jleagle/jimeagle/
-COPY . /go/src/github.com/Jleagle/jimeagle/
-RUN apk update && apk add curl git openssh
-RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-RUN dep ensure
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo
+FROM golang:1.12-alpine AS build-env
+WORKDIR /root/
+COPY ./ ./
+RUN apk update && apk add git
+RUN go mod tidy && GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -a
 
 # Runtime image
-FROM alpine:3.8
+FROM alpine:3.10 AS runtime-env
 WORKDIR /root/
-COPY --from=build-env /go/src/github.com/Jleagle/jimeagle/jimeagle ./
-COPY templates ./templates
+COPY --from=build-env /root/jimeagle ./
 COPY assets ./assets
-RUN apk update && apk add ca-certificates bash nano
-EXPOSE 8080
+COPY templates ./templates
+RUN apk update && apk add ca-certificates curl bash
 CMD ["./jimeagle"]
