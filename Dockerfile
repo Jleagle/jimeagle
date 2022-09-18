@@ -1,5 +1,5 @@
 # Build image
-FROM golang:1.12-alpine AS build-env
+FROM golang:1.19-alpine AS build-env
 WORKDIR /root/
 COPY ./ ./
 RUN apk update && apk add git
