@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/go-chi/chi"
@@ -35,13 +34,7 @@ func main() {
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Load templates needed
-	folder := os.Getenv("JIMEAGLE_PATH")
-	if folder == "" {
-		folder = "/root"
-	}
-
-	t, err := template.ParseFiles(folder + "/templates/home.html")
+	t, err := template.ParseFiles("./templates/home.html")
 	if err != nil {
 		panic(err)
 	}
@@ -55,13 +48,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
 func toolsHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Load templates needed
-	folder := os.Getenv("JIMEAGLE_PATH")
-	if folder == "" {
-		folder = "/root"
-	}
-
-	t, err := template.ParseFiles(folder + "/templates/tools.html")
+	t, err := template.ParseFiles("./templates/tools.html")
 	if err != nil {
 		panic(err)
 	}
