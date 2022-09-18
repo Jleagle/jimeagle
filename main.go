@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -19,7 +20,11 @@ func main() {
 
 	fileServer(r)
 
-	err := http.ListenAndServe(":8080", r)
+	serve := ":8080"
+
+	fmt.Println("Served on " + serve)
+
+	err := http.ListenAndServe(serve, r)
 	if err != nil {
 		log.Fatal(err)
 	}
