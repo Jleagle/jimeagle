@@ -2,41 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Jimeagle.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jim Eagle</title>
     <link rel="shortcut icon" href="/assets/favicon.png">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,700">
+
+    <!-- Modern Sans-Serif Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;700;900&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-color: #000413;
+            --text-primary: #f4eeb7;
+            --text-secondary: #a0a0a0;
+            --accent-color: #ffffff;
+            --transition-speed: 1s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            color: #fff;
-            background: #18bc9c;
-            margin-top: 100px;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.98);
+            animation: fadeIn var(--transition-speed) ease-out forwards;
         }
 
         h1 {
-            text-align: center;
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
             text-transform: uppercase;
-            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-weight: 700;
-            font-size: 4.75em;
+            line-height: 0.9;
+            margin-bottom: 2rem;
         }
 
-        hr {
-            text-align: center;
-            margin: 25px auto;
-            max-width: 418px;
-            border-top: solid 5px;
+        nav {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
         }
 
-        p {
-            text-align: center;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 1.75em;
-        }
-
-        p a {
-            color: #fff;
+        nav a {
+            color: var(--text-secondary);
             text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 
@@ -49,20 +91,19 @@
         }
 
         gtag('js', new Date());
-
         gtag('config', 'G-P6H9F6VST1');
     </script>
 </head>
 <body>
 
-<hr>
-<h1>Jim Eagle</h1>
-<hr>
-
-<p>
-    <a href="https://github.com/Jleagle">GitHub</a> -
-    <a href="mailto:jimeagle@gmail.com">Contact</a>
-</p>
+<div class="container">
+    <h1>Jim Eagle</h1>
+    <nav>
+        <a href="https://github.com/Jleagle">GitHub</a>
+        <a href="mailto:jimeagle@gmail.com">Contact</a>
+    </nav>
+</div>
 
 </body>
 </html>
+
